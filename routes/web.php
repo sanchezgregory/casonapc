@@ -65,10 +65,32 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'verified'], function() {
 
-        Route::get('publish', function() {
-            return view('publish');
-        });
+        // RUTAS PARA DEVICES, AGREGAR, ALMACENAR, EDITAR Y BORRAR.
+        Route::get('devices/index', 'DeviceController@indexDevice')->name('indexDevice');
+        Route::get('devices/add', 'DeviceController@createDevice')->name('createDevice');
+        Route::post('devices/add', 'DeviceController@storeDevice')->name('storeDevice');
+        Route::get('devices/edit/{id}', 'DeviceController@editDevice')->name('editDevice');
+        Route::put('devices/edit/{id}', 'DeviceController@updateDevice')->name('updateDevice');
+        Route::get('devices/delete/{id}', 'DeviceController@deleteDevice')->name('deleteDevice');
+        Route::delete('devices/delete/{id}', 'DeviceController@destroyDevice')->name('destroyDevice');
 
+        // RUTAS PARA DEPARTMENTS, AGREGAR, ALMACENAR, EDITAR Y BORRAR.
+        Route::get('departments/index', 'DepartmentController@indexDepartment')->name('indexDepartment');
+        Route::get('departments/add', 'DepartmentController@createDepartment')->name('createDepartment');
+        Route::post('departments/add', 'DepartmentController@storeDepartment')->name('storeDepartment');
+        Route::get('departments/edit/{id}', 'DepartmentController@editDepartment')->name('editDepartment');
+        Route::put('departments/edit/{id}', 'DepartmentController@updateDepartment')->name('updateDepartment');
+        Route::get('departments/delete/{id}', 'DepartmentController@deleteDepartment')->name('deleteDepartment');
+        Route::delete('departments/delete/{id}', 'DepartmentController@destroyDepartment')->name('destroyDepartment');
+
+        // RUTAS PARA STATUS, AGREGAR, ALMACENAR, EDITAR Y BORRAR.
+        Route::get('status/index', 'StatusController@indexStatus')->name('indexStatus');
+        Route::get('status/add', 'StatusController@createStatus')->name('createStatus');
+        Route::post('status/add', 'StatusController@storeStatus')->name('storeStatus');
+        Route::get('status/edit/{id}', 'StatusController@editStatus')->name('editStatus');
+        Route::put('status/edit/{id}', 'StatusController@updateStatus')->name('updateStatus');
+        Route::get('status/delete/{id}', 'StatusController@deleteStatus')->name('deleteStatus');
+        Route::delete('status/delete/{id}', 'StatusController@destroyStatus')->name('destroyStatus');
         Route::post('publish', function() {
 
             $data = Request::all();

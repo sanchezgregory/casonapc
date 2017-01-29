@@ -13,18 +13,18 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate(); // solo llena con x cantidad, no permite mas entrada de datos
+        //DB::table('users')->truncate(); // solo llena con x cantidad, no permite mas entrada de datos
 
         factory(User::class)->create([
-            'first_name' => 'Gregory',
-            'last_name' => 'Sanchez',
-            'username' => 'mcgregox',
-            'email' => 'mcgregox@gmail.com',
+            'first_name' => 'usuario',
+            'last_name' => 'usuario',
+            'username' => 'admin',
+            'email' => 'admin@admin.com',
             'role' => 'admin',
             'active' => true,
             'password' => bcrypt('123456')
         ]);
 
-        factory(User::class,49)->create();
+        factory(User::class,4)->create();
     }
 }

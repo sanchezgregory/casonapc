@@ -13,7 +13,7 @@ class AccessHandler
 {
     protected static $level = [
         'admin'     => '3',
-        'editor'    => '2',
+        'tecnico'   => '2',
         'user'      => '1'
     ];
 

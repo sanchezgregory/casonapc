@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->boolean('active')->default(true);
-            $table->enum('role', ['user','editor','admin']);
+            $table->enum('role', ['user','tecnico','admin']);
             $table->string('registration_token')->nullable();
             $table->rememberToken();
             $table->timestamps();

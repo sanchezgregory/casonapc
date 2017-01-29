@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -47,10 +47,37 @@
                         @if (auth()->check())
                             <li><a href="{{ url('/account') }}">Usuarios</a></li>
                         @endif
-                        @if (auth()->check() && Access::check(Auth::user()->role, 'editor'))
-                            <li><a href="{{ url('/publish') }}">Edito</a></li>
+                        @if (auth()->check() && Access::check(Auth::user()->role, 'tecnico'))
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('createDevice') }}">Agregar</a></li>
+                                        <li><a href=" {{ route('indexDevice') }}">Ver activos</a></li>
+                                        <li><a href=" {{ route('indexDevice') }}">Ver inactivos</a></li>
+                                        <li><a href="#">Editar</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Agregar Incidencia</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Editar Incidencia</a></li>
+                                    </ul>
+                                </li>
+
                         @endif
                         @if (auth()->check() && Access::check(Auth::user()->role, 'admin'))
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamentos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('createDepartment') }}">Agregar</a></li>
+                                        <li><a href=" {{ route('indexDepartment') }}">Ver todos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Status<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('createStatus') }}">Agregar</a></li>
+                                        <li><a href=" {{ route('indexStatus') }}">Ver todos</a></li>
+                                    </ul>
+                                </li>
                             <li><a href="{{ url('admin/settings') }}">Admin</a></li>
                         @endif
                     </ul>
