@@ -18,6 +18,7 @@ class CreateDevicesTable extends Migration
             $table->string('description');
             $table->string('code');
             $table->integer('department_id')->unsigned();
+            $table->boolean('active')->default(true);
             $table->softDeletes();
 
             $table->timestamps();

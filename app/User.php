@@ -37,4 +37,18 @@ class User extends Authenticatable
     {
         return $this->first_name.' '.$this->last_name;
     }
+
+    public function devices()
+    {
+        return $this->belongsToMany(Device::class, 'device_status_user')
+            ->withPivot('status_id', 'observation')
+            ->withTimestamps();
+    }
+
+    public function statuses()
+    {
+        return $this->belongsToMany(Status::class, 'device_status_user')
+            ->withPivot('device_id', 'observation')
+            ->withTimestamps();
+    }
 }

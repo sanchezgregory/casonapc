@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class DeviceController extends Controller
 {
+
+
     public function indexDevice()
     {
         $departments = Department::with('devices')->get();

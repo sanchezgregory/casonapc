@@ -12,8 +12,9 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
-        //DB::table('departments')->truncate(); // solo llena con x cantidad, no permite mas entrada de datos
-
+        factory(Status::class)->create([
+            'name' => 'Corregido'
+        ]);
         factory(Status::class,5)->create();
     }
 }

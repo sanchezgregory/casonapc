@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeviceStatusTable extends Migration
+class CreateDeviceStatusUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDeviceStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('device_status', function (Blueprint $table) {
+        Schema::create('device_status_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('device_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('status_id')->unsigned();
+            $table->string('observation');
             $table->timestamps();
 
             $table->foreign('device_id')->references('id')->on('devices');
@@ -26,7 +27,6 @@ class CreateDeviceStatusTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *
@@ -34,6 +34,6 @@ class CreateDeviceStatusTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('device_status_user');
     }
 }

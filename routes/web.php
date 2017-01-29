@@ -91,6 +91,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('status/edit/{id}', 'StatusController@updateStatus')->name('updateStatus');
         Route::get('status/delete/{id}', 'StatusController@deleteStatus')->name('deleteStatus');
         Route::delete('status/delete/{id}', 'StatusController@destroyStatus')->name('destroyStatus');
+
+        // RUTAS PARA CAMBIAR EL STATUS A LOS EQUIPOS.
+        Route::get('changeStatus/addstatus/{id}', 'DeviceStatusUserController@createStatusDeviceUser')->name('createStatusDevice');
+        Route::post('changeStatus/addstatus/{id}', 'DeviceStatusUserController@storeStatusDeviceUser')->name('storeStatusDevice');
+        Route::get('changeStatus/quitstatus/{id}', 'DeviceStatusUserController@deleteStatusDeviceUser')->name('deleteStatusDevice');
+
+
         Route::post('publish', function() {
 
             $data = Request::all();
