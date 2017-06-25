@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Ferreteria') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Ferreteria') }}
                     </a>
                 </div>
 
@@ -61,6 +61,19 @@
                                         <li><a href="#">Editar Incidencia</a></li>
                                     </ul>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('createCustomer') }}">Agregar</a></li>
+                                        <li><a href=" {{ route('indexCustomer') }}">Ver clientes</a></li>
+                                        <li><a href="#">Editar</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">vender</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">devolucion</a></li>
+                                    </ul>
+                                </li>
+
 
                         @endif
                         @if (auth()->check() && Access::check(Auth::user()->role, 'admin'))
@@ -113,6 +126,10 @@
                 </div>
             </div>
         </nav>
+                <div class="col-md-8 col-md-offset-2">
+                        @include('partials/errors')
+                        @include('partials/success')
+                </div>
 
         @yield('content')
 

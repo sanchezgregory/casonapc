@@ -109,6 +109,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('admin/settings', function () {
                 return view('admin/settings');
             });
+            Route::get('customers/index','CustomerController@indexCustomer')->name('indexCustomer');
+            Route::get('customers/create','CustomerController@createCustomer')->name('createCustomer');
+            Route::post('customers/create','CustomerController@storeCustomer')->name('storeCustomer');
+            Route::get('customers/create/{id}','CustomerController@editCustomer')->name('editCustomer');
+            Route::put('customers/create/{id}','CustomerController@updateCustomer')->name('updateCustomer');
         });
 
         Route::group(['middleware' => 'role:editor'], function() {
